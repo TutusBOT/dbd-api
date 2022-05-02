@@ -25,7 +25,7 @@
         'terror_radius' => $killer->terror_radius,
         'perks' => $killer->perks,
         'voice_actor' => $killer->voice_actor,
-        'is_free' => $killer->is_free,
+        'is_free' => boolval($killer->is_free),
         'dlc_id' => $killer->dlc_id,
     );
     // echo $killer->name;

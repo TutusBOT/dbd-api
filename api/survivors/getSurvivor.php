@@ -22,7 +22,7 @@
         'nationality' => $survivor->nationality,
         'perks' => $survivor->perks,
         'voice_actor' => $survivor->voice_actor,
-        'is_free' => $survivor->is_free,
+        'is_free' => boolval($survivor->is_free),
         'dlc_id' => $survivor->dlc_id,
     );
     

@@ -30,7 +30,7 @@
             'terror_radius' => $terror_radius,
             'perks' => $perks,
             'voice_actor' => $voice_actor,
-            'is_free' => $is_free,
+            'is_free' => boolval($is_free),
             'dlc_id' => $dlc_id,
         );
 
