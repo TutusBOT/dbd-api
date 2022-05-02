@@ -3,12 +3,12 @@
     header('Content-Type: application/json');
 
     include_once '../../config/Database.php';
-    include_once '../../models/Killers.php';
+    include_once '../../models/Killer.php';
 
     $database = new Database();
     $db = $database->connect();
 
-    $killers = new Killers($db);
+    $killers = new Killer($db);
     
     $result = $killers->getKillers();
 
