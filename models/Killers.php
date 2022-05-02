@@ -28,5 +28,27 @@
             $stmt->execute();
             return $stmt;
         }
+
+        public function getKiller()
+        {
+            $query = 'SELECT * FROM ' . $this->table . ' WHERE name=?';
+
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(1, $this->name);
+            $stmt->execute();
+
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $this->role = $row['role'];
+            $this->fullname = $row['fullname'];
+            $this->realm = $row['realm'];
+            $this->power = $row['power'];
+            $this->weapon = $row['weapon'];
+            $this->speed = $row['speed'];
+            $this->terror_radius = $row['terror_radius'];
+            $this->dlc = $row['dlc'];
+            $this->perks = $row['perks'];
+
+            return $stmt;
+        }
     }
 ?>
