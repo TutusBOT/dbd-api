@@ -10,7 +10,7 @@
 
     $killer = new Character($db);
 
-    $killer->name = isset($_GET['name']) ? $_GET['name'] : die();
+    $killer->name = isset($_GET['name']) ? urldecode($_GET['name']) : die();
 
     $killer->getKiller();
     $killer_arr = array(

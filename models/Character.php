@@ -34,7 +34,7 @@
 
         public function getKiller()
         {
-            $query = 'SELECT * FROM ' . $this->table . ' WHERE name=? and role="killer"';
+            $query = 'SELECT * FROM ' . $this->table . ' WHERE name=? and role="killer" LIMIT 1';
 
             $stmt = $this->conn->prepare($query);
             $stmt->bindParam(1, $this->name);
@@ -65,6 +65,27 @@
 
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
+            return $stmt;
+        }
+
+        public function getSurvivor()
+        {
+            $query = 'SELECT * FROM ' . $this->table . ' WHERE name = ? and role="survivor" LIMIT 1';
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(1, $this->name);
+            $stmt->execute();
+
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $this->id = $row['id'];
+            $this->name = $row['name'];
+            $this->role = $row['role'];
+            $this->fullname = $row['fullname'];
+            $this->nationality = $row['nationality'];
+            $this->perks = $row['perks'];
+            $this->voice_actor = $row['voice_actor'];
+            $this->is_free = $row['is_free'];
+            $this->dlc_id = $row['dlc_id'];
+
             return $stmt;
         }
     }
