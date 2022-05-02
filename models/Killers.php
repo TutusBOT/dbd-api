@@ -14,5 +14,19 @@
         public $terror_radius;
         public $dlc;
         public $perks;
+
+        public function __construct($db)
+        {
+            $this->conn = $db;
+        }
+
+        public function getKillers() 
+        {
+            $query = 'SELECT * FROM ' . $this->table . ' ORDER BY name';
+
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
     }
 ?>
