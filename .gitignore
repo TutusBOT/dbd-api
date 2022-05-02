@@ -1,2 +1,3 @@
-/dbd.mwb
-/dbd.sql
+*.mwb
+*.sql
+*.mwb.bak
