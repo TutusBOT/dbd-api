@@ -3,12 +3,12 @@
     header('Content-Type: application/json');
 
     include_once '../../config/Database.php';
-    include_once '../../models/Killer.php';
+    include_once '../../models/Character.php';
 
     $database = new Database();
     $db = $database->connect();
 
-    $killers = new Killer($db);
+    $killers = new Character($db);
     
     $result = $killers->getKillers();
 
@@ -22,13 +22,16 @@
             'name' => $name,
             'role' => $role,
             'fullname' => $fullname,
+            'nationality' => $nationality,
             'realm' => $realm,
             'power' => $power,
             'weapon' => $weapon,
             'speed' => $speed,
             'terror_radius' => $terror_radius,
-            'dlc' => $dlc,
-            'perks' => $perks
+            'perks' => $perks,
+            'voice_actor' => $voice_actor,
+            'is_free' => $is_free,
+            'dlc_id' => $dlc_id,
         );
 
         array_push($killers_arr, $killer);

@@ -3,12 +3,12 @@
     header('Content-Type: application/json');
 
     include_once '../../config/Database.php';
-    include_once '../../models/Killer.php';
+    include_once '../../models/Character.php';
 
     $database = new Database();
     $db = $database->connect();
 
-    $killer = new Killer($db);
+    $killer = new Character($db);
 
     $killer->name = isset($_GET['name']) ? $_GET['name'] : die();
 
@@ -18,12 +18,15 @@
         'name' => $killer->name,
         'role' => $killer->role,
         'fullname' => $killer->fullname,
+        'nationality' => $killer->nationality,
         'realm' => $killer->realm,
         'power' => $killer->power,
         'speed' => $killer->speed,
         'terror_radius' => $killer->terror_radius,
-        'dlc' => $killer->dlc,
         'perks' => $killer->perks,
+        'voice_actor' => $killer->voice_actor,
+        'is_free' => $killer->is_free,
+        'dlc_id' => $killer->dlc_id,
     );
     // echo $killer->name;
     if($killer_arr['id'] == NULL){
